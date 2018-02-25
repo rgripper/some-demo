@@ -2,5 +2,5 @@
   {{gender}}
 </h2>
 <ul>
-    <li *ngFor="let pet of pets">{{pet.name}}</li>
+    <li *ngFor="let pet of orderPetsByName(pets)">{{pet.name}}</li>
 </ul>
