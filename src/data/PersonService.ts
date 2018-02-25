@@ -21,13 +21,18 @@ export class PersonService {
     /**
      *
      */
-    constructor(private client: Jsonp) {   
+    constructor(private client: Jsonp) {
     }
 
-    getAll(): Observable<Readonly<Person>> {
+    private ensurePetsArray(person: Person): Person {
+        return person.pets ? person : { ...person, pets: [] };
+    }
+
+    getAll(): Observable<ReadonlyArray<Readonly<Person>>> {
+        const search = { callback: "JSONP_CALLBACK" };
         return this.client
-            .get('http://agl-developer-test.azurewebsites.net/people.json')
-            .map(x => x.json())
-            .map(x => x.pets ? x : { ...x, pets: [] });
+            .get('http://agl-developer-test.azurewebsites.net/people.json', { search })
+            .map(x => x.json() as Person[])
+            .map(persons => persons.map(this.ensurePetsArray));
     }
 }
