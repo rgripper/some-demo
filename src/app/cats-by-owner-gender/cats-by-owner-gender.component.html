@@ -1,0 +1,3 @@
+<div *ngFor="let group of petsByOwnersGenders$ | async">
+    <app-owner-gender [gender]="group.gender" [pets]="group.pets"></app-owner-gender>
+</div>
