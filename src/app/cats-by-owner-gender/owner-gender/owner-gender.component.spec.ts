@@ -13,16 +13,16 @@ describe('OwnerGenderComponent', () => {
         TestBed.configureTestingModule({
             declarations: [OwnerGenderComponent]
         })
-        .compileComponents();
+            .compileComponents();
     }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(OwnerGenderComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
     });
 
     it('should create', () => {
+
         const gender = "Male";
         const pets = [{ name: "CCC", type: "cat" }, { name: "AAA", type: "cat" }, { name: "BBB", type: "dog" }];
 
@@ -44,5 +44,6 @@ describe('OwnerGenderComponent', () => {
             expect(petItems[1].textContent).toBe("BBB");
             expect(petItems[2].textContent).toBe("CCC");
         })
+
     })
 });
